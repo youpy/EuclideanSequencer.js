@@ -1,5 +1,5 @@
 var target = document.getElementById('draggable');
-var ctx = new AudioContext();
+var ctx = typeof AudioContext == 'undefined' ? new webkitAudioContext() : new AudioContext();
 var seq = new Sequencer(ctx);
 
 var vm = new Vue({
@@ -53,7 +53,7 @@ function dropHandler(event) {
   event.preventDefault();
 
   Array.prototype.forEach.call(files, function (file) {
-    if(file.type == 'audio/mp3') {
+    if(file.type.match(/audio\/(mp3|mpeg)/)) {
       var reader = new FileReader();
 
       reader.addEventListener('load', function (event) {
@@ -70,3 +70,4 @@ function dropHandler(event) {
 
 target.addEventListener('dragover', dragOverHandler);
 target.addEventListener('drop', dropHandler);
+
