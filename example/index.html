@@ -17,10 +17,12 @@
 
     <h2>Instruments</h2>
 
-    <fieldset v-repeat="items">
-      <legend>{{name}}</legend>
-      <label>numPulses <input type="range" min="0" max="{{numSlots}}" value="{{numPulses}}" v-on="input: changeNumPulses(this, $event)"> {{numPulses}}/{{numSlots}}</label>
-    </fieldset>
+    <div>
+      <fieldset v-repeat="items">
+        <legend>{{name}}</legend>
+        <label>numPulses <input type="range" min="0" max="{{numSlots}}" value="{{numPulses}}" v-on="input: changeNumPulses(this, $event)"> {{numPulses}}/{{numSlots}}</label>
+      </fieldset>
+    </div>
 
     <button v-on="click: toggle(this)">{{playing ? 'stop' : 'start'}}</button>
   </div>
