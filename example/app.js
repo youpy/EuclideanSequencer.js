@@ -2,6 +2,9 @@ var target = document.getElementById('draggable');
 var ctx = typeof AudioContext == 'undefined' ? new webkitAudioContext() : new AudioContext();
 var seq = new Sequencer(ctx);
 
+seq.setTempo(60);
+seq.setNumSlots(29);
+
 var vm = new Vue({
   el: "#sequencer",
   data: {
@@ -27,7 +30,9 @@ var vm = new Vue({
   }
 });
 
-['a', 'b', 'c', 'd', 'e'].forEach(function(name) {
+['a:8', 'b:5', 'c:16', 'd:11', 'e:9'].forEach(function(item) {
+  var name = item.split(/:/)[0];
+  var numPulses = +item.split(/:/)[1];
   var request = new XMLHttpRequest();
 
   request.open('GET', name + '.mp3', true);
@@ -35,7 +40,9 @@ var vm = new Vue({
 
   request.onload = function() {
     ctx.decodeAudioData(request.response, function(buf) {
-      seq.add(new Item(buf, name));
+      var item = new Item(buf, name);
+      item.numPulses = numPulses;
+      seq.add(item);
     });
   };
   request.send(null);
@@ -70,4 +77,5 @@ function dropHandler(event) {
 
 target.addEventListener('dragover', dragOverHandler);
 target.addEventListener('drop', dropHandler);
+
 
