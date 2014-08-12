@@ -1,0 +1,33 @@
+body {
+    font-family: sans-serif;
+}
+
+#draggable {
+    width: 300px;
+    height: 200px;
+    border: 10px dashed #f00;
+    float: left;
+}
+
+#draggable p {
+    text-align: center;
+    margin: 70px 0 0;
+}
+
+#sequencer {
+    margin: 0 0 0 350px;
+}
+
+fieldset {
+    width: 300px;
+}
+
+label {
+    display: block;
+}
+
+button {
+    margin: 10px 0 0;
+    font-size: 20px;
+}
+

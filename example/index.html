@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EuclideanSeqenser.js</title>
+  <link rel="stylesheet" type="text/css" href="app.css" media="screen" />
+</head>
+<body>
+  <h1>EuclideanSequencer.js</h1>
+
+  <div id="draggable"><p>drag audio/mp3 here</p></div>
+  <div id="sequencer">
+    <h2>Global</h2>
+
+    <label>tempo <input type="range" min="1" max="300" value="{{tempo}}" v-on="input: changeTempo(this, $event)"> {{tempo}}</label>
+    <label>numSlots <input type="range" min="1" max="30" value="{{numSlots}}" v-on="input: changeNumSlots(this, $event)"> {{numSlots}}</label>
+
+    <h2>Instruments</h2>
+
+    <fieldset v-repeat="items">
+      <legend>{{name}}</legend>
+      <label>numPulses <input type="range" min="0" max="{{numSlots}}" value="{{numPulses}}" v-on="input: changeNumPulses(this, $event)"> {{numPulses}}/{{numSlots}}</label>
+    </fieldset>
+
+    <button v-on="click: toggle(this)">{{playing ? 'stop' : 'start'}}</button>
+  </div>
+
+  <script src="js/index.min.js"></script>
+  <script src="vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
