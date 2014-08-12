@@ -27,7 +27,7 @@ var vm = new Vue({
   }
 });
 
-['a', 'b', 'c'].forEach(function(name) {
+['a', 'b', 'c', 'd', 'e'].forEach(function(name) {
   var request = new XMLHttpRequest();
 
   request.open('GET', name + '.mp3', true);
