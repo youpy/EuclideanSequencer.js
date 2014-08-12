@@ -1,5 +1,5 @@
 var target = document.getElementById('draggable');
-var ctx = new AudioContext();
+var ctx = typeof AudioContext == 'undefined' ? new webkitAudioContext() : new AudioContext();
 var seq = new Sequencer(ctx);
 
 var vm = new Vue({
@@ -70,3 +70,4 @@ function dropHandler(event) {
 
 target.addEventListener('dragover', dragOverHandler);
 target.addEventListener('drop', dropHandler);
+
