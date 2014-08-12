@@ -2,7 +2,7 @@ var target = document.getElementById('draggable');
 var ctx = typeof AudioContext == 'undefined' ? new webkitAudioContext() : new AudioContext();
 var seq = new Sequencer(ctx);
 
-seq.setTempo(60);
+seq.setTempo(73);
 seq.setNumSlots(29);
 
 var vm = new Vue({
